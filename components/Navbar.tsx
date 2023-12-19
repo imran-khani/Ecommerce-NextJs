@@ -29,7 +29,9 @@ const Navbar = () => {
                 href={nav.path}
                 key={i}
                 className={`text-lg font-semibold ${
-                  isActive ? "text-white bg-primary px-3 rounded-sm py-1" : "text-gray-700"
+                  isActive
+                    ? "text-white hover:text-white transition-all bg-primary px-3 rounded-sm py-1"
+                    : "text-gray-700"
                 }  hover:text-gray-900`}
               >
                 {nav.name}
@@ -43,7 +45,9 @@ const Navbar = () => {
             className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 md:h-24 md:w-24 rounded-none"
           >
             <ShoppingBag />
-            <span className="hidden sm:block text-xs font-semibold text-gray-500">Cart</span>
+            <span className="hidden sm:block text-xs font-semibold text-gray-500">
+              Cart
+            </span>
           </Button>
         </div>
       </div>
