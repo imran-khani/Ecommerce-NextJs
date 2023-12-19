@@ -3,6 +3,7 @@
 import { NAVIGATION } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -11,7 +12,7 @@ const Navbar = () => {
       <div className="flex justify-between max-w-2xl mx-auto px-4 lg:max-w-7xl sm:px-6 items-center py-3">
         <Link href="/">
           <h1 className="text-4xl font-bold">
-            <span className="text-primary">E</span>COMMERCE
+            <span className="text-primary">E-</span>COMMERCE
           </h1>
         </Link>
 
@@ -27,7 +28,7 @@ const Navbar = () => {
                 href={nav.path}
                 key={i}
                 className={`text-lg font-semibold ${
-                  isActive ? "text-primary" : "text-gray-700"
+                  isActive ? "text-white bg-primary" : "text-gray-700"
                 }  hover:text-gray-900`}
               >
                 {nav.name}
@@ -35,7 +36,11 @@ const Navbar = () => {
             );
           })}
         </nav>
-        <div className="flex divide-x border-r sm:border-l"></div>
+        <div className="flex divide-x border-r sm:border-l">
+          <Button className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 md:h-24 md:w-24 rounded-none">
+            Cart
+          </Button>
+        </div>
       </div>
     </header>
   );
