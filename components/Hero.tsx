@@ -1,11 +1,21 @@
 import Image from "next/image";
-import {client} from '@/sanity-project/sanity.cli'
-const getData = async ()=>{
-  const query = "*[_type == 'heroImages'][0]"
-  const data = await client.fetch(query)
-}
+import { client } from "@/sanity-project/sanity/lib/client";
+// import { url } from "@/sanity-project/sanity/lib/image";
+import { urlForImage } from "@/sanity-project/sanity/lib/image";
+const getData = async () => {
+  const query = "*[_type=='heroImages']";
+  const data = await client.fetch(query);
+  return data;
+};
 
-const Hero = () => {
+const Hero = async () => {
+  const data = await getData().then((data)=>{
+    return data
+  })
+  console.log(data) 
+  if (!data) { 
+    return <div>No data!</div>; 
+  } 
   return (
     <section className="mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8">
       <div className="mb-8 flex  flex-wrap justify-between md:mb-16">
@@ -20,7 +30,7 @@ const Hero = () => {
         </div>
         <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
           <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:left-16 md:top-16 lg:ml-0">
-            {/* <Image src={'/hero.png'} /> */}
+            <Image src={urlForImage(data.image1)} alt="heroImage1" />
           </div>
         </div>
       </div>
