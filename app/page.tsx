@@ -1,6 +1,9 @@
 
 export default function Home() {
   return (
-   <main>Hello khan</main>
+   <main>
+    Working in progress...
+    building schemas...
+   </main>
   )
 }
