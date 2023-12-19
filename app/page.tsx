@@ -1,11 +1,8 @@
-import { Loader2Icon } from "lucide-react";
+import Hero from "@/components/Hero";
 export default function Home() {
   return (
-    <main className=" py-24 flex justify-center items-center text-5xl">
-      <p>
-        Work in progress...{" "}
-        <Loader2Icon className="inline" color="blue" size={40} />
-      </p>
-    </main>
+    <div className="bg-white pb-6 sm:pb-8 lg:pb-12">
+      <Hero  />
+    </div>
   );
 }
