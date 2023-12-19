@@ -1,4 +1,9 @@
 import Image from "next/image";
+import {client} from '@/sanity-project/sanity.cli'
+const getData = async ()=>{
+  const query = "*[_type == 'heroImages'][0]"
+  const data = await client.fetch(query)
+}
 
 const Hero = () => {
   return (
