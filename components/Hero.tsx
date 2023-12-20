@@ -1,21 +1,18 @@
 import Image from "next/image";
-import { client } from "@/sanity-project/sanity/lib/client";
-// import { url } from "@/sanity-project/sanity/lib/image";
-import { urlForImage } from "@/sanity-project/sanity/lib/image";
+import { client } from "@/sanity-project/lib/client";
+import { urlForImage } from "@/sanity-project/lib/image";
 const getData = async () => {
-  const query = "*[_type=='heroImages']";
+  const query = "*[_type=='heroImage'][0]";
   const data = await client.fetch(query);
   return data;
 };
 
 const Hero = async () => {
-  const data = await getData().then((data)=>{
-    return data
-  })
-  console.log(data) 
-  if (!data) { 
-    return <div>No data!</div>; 
-  } 
+  const data = await getData();
+           
+  if (!data) {
+    return <div>No data!</div>;
+  }
   return (
     <section className="mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8">
       <div className="mb-8 flex  flex-wrap justify-between md:mb-16">
