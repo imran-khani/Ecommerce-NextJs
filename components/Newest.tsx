@@ -1,6 +1,7 @@
 import { client } from "@/app/lib/sanity";
 import { ProductTypes } from "@/lib/interface";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const getData = async () => {
@@ -34,7 +35,28 @@ const Newest = async () => {
             See All <ArrowRight size={20} />
           </Link>
         </div>
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"></div>
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {products.map((product) => (
+            <div key={product._id} className="group relative">
+              <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 transition-all duration-100 group-hover:opacity-75 lg:h-72 xl:h-80">
+                <Image
+                  src={product.imageUrl}
+                  alt={"product.name"}
+                  className="h-full w-full object-cover object-center"
+                  width={500}
+                  height={500}
+                />
+              </div>
+              <h3 className="mt-4 text-sm text-gray-700">
+                <Link href={`/products/${product.slug}`}>
+                  <span aria-hidden="true" className="absolute inset-0"></span>
+                  {product.name}
+                </Link>
+              </h3>
+              <p className="mt-1 text-sm text-gray-500">{product.price} kr</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
