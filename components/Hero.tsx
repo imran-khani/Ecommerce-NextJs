@@ -1,11 +1,5 @@
 import Image from "next/image";
-import { client } from "@/sanity-project/lib/client";
-import { urlForImage } from "@/sanity-project/lib/image";
-const getData = async () => {
-  const query = "*[_type=='heroImage'][0]";
-  const data = await client.fetch(query);
-  return data;
-};
+
 
 const Hero = async () => {
   const data = await getData();
