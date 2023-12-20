@@ -22,19 +22,19 @@ const Newest = async () => {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto py-16 sm:px-6 sm:py-24 max-w-2xl px-4 lg:max-w-7xl lg:px-8">
-        <div className="flex justify-between items-center">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             Our Newest Products
           </h2>
           <Link
-            className="text-primary flex items-center gap-x-1"
+            className="flex items-center gap-x-1 text-primary"
             href="/products"
           >
             See All <ArrowRight size={20} />
           </Link>
         </div>
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-4 gap-x-6 gap-y-10 sm:grid-cols-2 xl:gap-x-8"></div>
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"></div>
       </div>
     </div>
   );
