@@ -34,7 +34,7 @@ const Newest = async () => {
             See All <ArrowRight size={20} />
           </Link>
         </div>
-        <div className="mt-6 grid grid-cols-1 lg:grid-cols-4 gap-x-6 gap-y-10"></div>
+        <div className="mt-6 grid grid-cols-1 lg:grid-cols-4 gap-x-6 gap-y-10 sm:grid-cols-2 xl:gap-x-8"></div>
       </div>
     </div>
   );
