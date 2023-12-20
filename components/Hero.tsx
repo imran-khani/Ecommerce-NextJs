@@ -1,9 +1,14 @@
+import { client, urlFor } from "@/app/lib/sanity";
 import Image from "next/image";
 
+const fetchData = async () => {
+  const query = "*[_type=='heroImage'][0]"
+  const data = await client.fetch(query)
+  return data
+}
 
 const Hero = async () => {
-  const data = await getData();
-           
+  const data = await fetchData()
   if (!data) {
     return <div>No data!</div>;
   }
@@ -21,7 +26,16 @@ const Hero = async () => {
         </div>
         <div className="mb-12 flex w-full md:mb-16 lg:w-2/3">
           <div className="relative left-12 top-12 z-10 -ml-12 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:left-16 md:top-16 lg:ml-0">
-            <Image src={urlForImage(data.image1)} alt="heroImage1" />
+            <Image width={500} height={500} src={urlFor(data.heroImage1).url()} className="h-full w-full object-center object-cover" alt="heroImage1" />
+          </div>
+          <div className="overflow-hidden rounded-lg bg-gray-100 shadow-lg">
+            <Image
+              src={urlFor(data.heroImage2).url()}
+              width={500}
+              height={500}
+              alt="heroImage2"
+              className="h-full w-full object-center object-cover"
+            />
           </div>
         </div>
       </div>
