@@ -57,6 +57,18 @@ const Hero = async () => {
           >
             Men
           </Link>
+          <Link
+            href={"/men"}
+            className="flex items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 w-1/3"
+          >
+            Women
+          </Link>
+          <Link
+            href={"/men"}
+            className="flex items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 w-1/3"
+          >
+            Kids
+          </Link>
         </div>
       </div>
     </section>
