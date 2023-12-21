@@ -10,7 +10,7 @@ interface ImageGalleryTypes {
 const ImageGallery = ({ images }: ImageGalleryTypes) => {
   const [bgImage, setBgImage] = useState(images[0]);
 
-  const changeImageOnClickAndHover = (image: any) => {
+  const changeImageOnClick = (image: any) => {
     setBgImage(image);
   };
 
@@ -24,7 +24,7 @@ const ImageGallery = ({ images }: ImageGalleryTypes) => {
               alt={"product IMges"}
               width={200}
               height={200}
-              onClick={() => changeImageOnClickAndHover(image)}
+              onClick={() => changeImageOnClick(image)}
               className="h-full w-full cursor-pointer object-cover object-center transition-all"
             />
           </div>
