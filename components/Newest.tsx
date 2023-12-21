@@ -13,7 +13,7 @@ export const getData = async () => {
               "category":category->name,
               "imageUrl":images[0].asset->url
           }`;
-  const data = await client.fetch(query);
+  const data = await client.fetch(query,{next:{fetch:4}});
   return data;
 };
 
