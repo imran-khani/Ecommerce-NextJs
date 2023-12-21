@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const getData = async () => {
+export const getData = async () => {
   const query = `*[_type=='product'][0...4] | order(_createdAt asc) {
             _id,
               name,
@@ -47,13 +47,25 @@ const Newest = async () => {
                   height={500}
                 />
               </div>
-              <h3 className="mt-4 text-sm text-gray-700">
-                <Link href={`/products/${product.slug}`}>
-                  <span aria-hidden="true" className="absolute inset-0"></span>
-                  {product.name}
-                </Link>
-              </h3>
-              <p className="mt-1 text-sm text-gray-500">{product.price} kr</p>
+              <div className="mt-4 flex flex-wrap items-center justify-between px-1">
+                <h3 className=" text-sm text-gray-700">
+                  <Link href={`/products/${product.slug}`}>
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0"
+                    ></span>
+                    {product.name}
+                  </Link>
+                </h3>
+                <p className="mt-1 text-sm font-bold text-gray-900">
+                  ${product.price}
+                </p>
+              </div>
+              <div className="flex justify-between">
+                <p className="mt-1 text-sm font-bold text-gray-900">
+                  {product.category}
+                </p>
+              </div>
             </div>
           ))}
         </div>
