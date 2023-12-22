@@ -5,14 +5,14 @@ export const NAVIGATION = [
     },
     {
         name: 'Men',
-        path: '/men'
+        path: '/Men'
     },
     {
         name: 'Women',
-        path: '/women'
+        path: '/Women'
     },
     {
         name: 'Kids',
-        path: '/kids'
+        path: '/Kids'
     }
 ]

@@ -1,41 +1,33 @@
+import { ProductTypes } from "@/lib/interface";
 import Image from "next/image";
 import { client } from "../lib/sanity";
-import { ProductTypes } from "@/lib/interface";
 import Link from "next/link";
 
-const getData = async (category: string) => {
-  try {
-    const query = `
-    *[_type=='product' && category->name =='${category}']{
-        _id,
-        "imageUrl":images[0].asset->url,
-          "slug":slug.current,
-          "categoryName":category->name,
-          name,
-          price
-      }`;
-    const res = client.fetch(query);
-    if (!res) {
-      throw new Error("category fetching failed.");
-    }
-    return res;
-  } catch (error: any) {
-    throw new Error(error);
-  }
+const getData = async () => {
+  const query = `*[_type=='product'][0...4] {
+              _id,
+                name,
+                price,
+                "slug":slug.current,
+                "category":category->name,
+                "imageUrl":images[0].asset->url
+            }`;
+  const data = await client.fetch(query, { next: { fetch: 4 } });
+  return data;
 };
 
-const Category = async ({ params }: { params: { category: string } }) => {
-  const data: ProductTypes[] = await getData(params.category);
+const Products = async () => {
+  const products: ProductTypes[] = await getData();
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4  sm:px-6  lg:max-w-7xl lg:px-8">
+      <div className="mx-auto max-w-2xl px-4  sm:px-6 sm:py-2 lg:max-w-7xl lg:px-8">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Our Newest Products for {params.category}
+            Browse our Products
           </h2>
         </div>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {data.map((product) => (
+          {products.map((product) => (
             <div key={product._id} className="group relative">
               <div className="h-56 w-full overflow-hidden rounded-md bg-gray-200 transition-all duration-100 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <Image
@@ -73,4 +65,4 @@ const Category = async ({ params }: { params: { category: string } }) => {
   );
 };
 
-export default Category;
+export default Products;
