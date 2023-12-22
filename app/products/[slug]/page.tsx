@@ -3,6 +3,7 @@ import ImageGallery from "@/components/ImageGallery";
 import { Button } from "@/components/ui/button";
 import { ProductPageTypes } from "@/lib/interface";
 import { ShoppingBasket, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 async function getData(slug: string) {
   const query = `*[_type == "product" && slug.current == "${slug}"][0] {
@@ -31,10 +32,12 @@ const Product = async ({ params }: { params: { slug: string } }) => {
           <ImageGallery images={product.images} />
           <div className="flex flex-col gap-4">
             <h1 className="text-2xl font-bold">{product.name}</h1>
-            <p className="text-gray-500 mb-2">{product.description}</p>
-            <p className="font-bold text-gray-500">
-              Category: {product.category}
-            </p>
+            <p className="mb-2 text-gray-500">{product.description}</p>
+            <Link href={`/${product.category}`}>
+              <p className="font-bold text-gray-500">
+                Category: {product.category}
+              </p>
+            </Link>
             <p className="font-bold text-gray-500">Price: ${product.price}</p>
             <div className="flex gap-5 ">
               <Button
