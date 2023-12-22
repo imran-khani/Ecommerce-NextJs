@@ -43,7 +43,7 @@ const Navbar = () => {
         </nav>
         <div className="flex divide-x border-r sm:border-l">
           <Button
-            onClick={() => handleCartClick}
+            onClick={() => handleCartClick()}
             variant={"outline"}
             className="flex h-12 w-12 flex-col gap-y-1.5 rounded-none sm:h-20 md:h-24 md:w-24"
           >
