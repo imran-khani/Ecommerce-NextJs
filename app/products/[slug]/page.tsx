@@ -53,9 +53,11 @@ const Product = async ({ params }: { params: { slug: string } }) => {
                 name={product.name}
                 price={product.price}
                 description={product.description}
-                image={product.images}
+                image={product.images[0]}
                 currency="$"
-              />
+                key={product._id}
+                price_id={product.price_id}
+                />
             </div>
           </div>
         </div>

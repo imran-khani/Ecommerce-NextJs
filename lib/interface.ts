@@ -16,4 +16,5 @@ export interface ProductPageTypes {
     slug: string;
     category: string;
     description: string;
+    price_id:string;
 }
