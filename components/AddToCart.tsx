@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useShoppingCart } from "use-shopping-cart";
-import { urlFor } from '@/app/lib/sanity'
+import { urlFor } from "@/app/lib/sanity";
 
 export interface ProductCart {
   name: string;

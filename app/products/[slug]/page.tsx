@@ -1,9 +1,8 @@
 import { client } from "@/app/lib/sanity";
 import AddToCart from "@/components/AddToCart";
+import BuyNOw from "@/components/BuyNow";
 import ImageGallery from "@/components/ImageGallery";
-import { Button } from "@/components/ui/button";
 import { ProductPageTypes } from "@/lib/interface";
-import { ShoppingBasket } from "lucide-react";
 import Link from "next/link";
 
 async function getData(slug: string) {
@@ -41,14 +40,15 @@ const Product = async ({ params }: { params: { slug: string } }) => {
             </Link>
             <p className="font-bold text-gray-500">Price: ${product.price}</p>
             <div className="flex gap-5 ">
-              <Button
-                className="rounded-lg bg-gray-900 px-4 py-2 text-white"
-                id="checkout-button"
-                role="link"
-              >
-                <ShoppingBasket className="mr-4" size={20} />
-                Buy Now
-              </Button>
+              <BuyNOw
+                currency="$"
+                description={product.description}
+                image={product.images[0]}
+                name={product.name}
+                price={product.price}
+                price_id={product.price_id}
+                key={product._id}
+              />
               <AddToCart
                 name={product.name}
                 price={product.price}
@@ -57,7 +57,7 @@ const Product = async ({ params }: { params: { slug: string } }) => {
                 currency="$"
                 key={product._id}
                 price_id={product.price_id}
-                />
+              />
             </div>
           </div>
         </div>
