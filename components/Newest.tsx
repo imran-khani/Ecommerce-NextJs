@@ -42,7 +42,7 @@ const Newest = async () => {
                 <Image
                   src={product.imageUrl}
                   alt={"product.name"}
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-cover "
                   width={500}
                   height={500}
                 />
