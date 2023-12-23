@@ -38,7 +38,7 @@ const Newest = async () => {
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product._id} className="group relative">
-              <div className=" h-72  w-full rounded-md bg-gray-200 transition-all duration-100 group-hover:opacity-75 lg:h-72 xl:h-80">
+              <div className=" h-56  w-full rounded-md bg-gray-200 transition-all duration-100 group-hover:opacity-75 lg:h-72 xl:h-80">
                 <Image
                   src={product.imageUrl}
                   alt={"product.name"}
